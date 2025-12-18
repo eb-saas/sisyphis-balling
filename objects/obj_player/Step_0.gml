@@ -1,12 +1,28 @@
-if (keyboard_check(vk_left)) {
-	x=x-2
+show_debug_message(string(x)+", "+string(y))
+
+x = x + playerXVelocity
+if (y + playerYVelocity > hillSlope(x)) {
+	y = hillSlope(x)
+	onFloor = true
+} else {
+	y = y + playerYVelocity
+	onFloor = false
 }
-if (keyboard_check(vk_right)) {
-	x=x+2
+
+drag = (onFloor ? 1 - floorDrag : 1 - airDrag)
+
+if (keyboard_check(keybindForward)) {
+	playerXVelocity += 1.5
 }
-if (keyboard_check(vk_up)) {
-	y=y-2
+if (keyboard_check(keybindBackward)) {
+	playerXVelocity += -1.5
 }
-if (keyboard_check(vk_down)) {
-	y=y+2
+if (keyboard_check(keybindJump) && onFloor) {
+	playerYVelocity += -100
 }
+if (keyboard_check(keybindDribble)) {
+	show_debug_message("Dribble!")
+}
+
+playerXVelocity = playerXVelocity * drag
+playerYVelocity = playerYVelocity * drag + (onFloor ? 0 : gravityForce)
