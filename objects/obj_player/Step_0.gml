@@ -20,7 +20,7 @@ if (keyboard_check(keybindBackward)) {
 if (keyboard_check(keybindJump) && onFloor) {
 	playerYVelocity += -100
 }
-if (keyboard_check(keybindToss) && current_time - prevTossTime >= 100) {
+if (keyboard_check(keybindToss) && current_time - prevTossTime >= global.ballDelay) {
 	show_debug_message("Toss!")
 	var thrownBall = instance_create_layer(x, y, "Ball", obj_playerBall)
 	thrownBall.ballXVelocity = 30 + power(playerXVelocity, 2) + (random(10) - 5)

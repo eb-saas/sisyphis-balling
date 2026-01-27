@@ -12,6 +12,6 @@ var dragMult = (onFloor ? 1 - global.floorDrag : 1 - global.airDrag)
 ballXVelocity = ballXVelocity * dragMult
 ballYVelocity = ballYVelocity * dragMult + (onFloor ? 0 : global.gravityForce)
 
-if (current_time - timeSpawned >= 10000) {
+if (current_time - timeSpawned >= global.ballDelay) {
 	instance_destroy()
 }

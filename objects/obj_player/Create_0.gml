@@ -10,7 +10,8 @@ playerYVelocity = 0;
 global.airDrag = 0.2;
 global.floorDrag = 0.4;
 global.gravityForce= 6;
+global.ballDelay = 1000;
 onFloor = false;
-prevTossTime = -1000;
+prevTossTime = -global.ballDelay;
 
 //window_set_fullscreen(true)
